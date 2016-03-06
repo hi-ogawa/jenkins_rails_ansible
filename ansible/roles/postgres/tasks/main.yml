@@ -1,0 +1,37 @@
+---
+- name: install postgres
+  apt: name={{ item }} state=present
+  with_items:
+    - postgresql
+    - libpq-dev
+    - python-psycopg2
+
+- name: create db
+  postgresql_db: name={{ postgres.dbname }}
+  become_user: postgres
+  notify: restart postgresql
+
+- name: create db user
+  postgresql_user:
+    name: "{{ postgres.username }}"
+    password: "{{ postgres.password }}"
+  become_user: postgres
+  notify: restart postgresql
+
+- name: update pg_hba.conf
+  template:
+    src: "hba_file.conf.j2"
+    dest: "/etc/postgresql/{{ postgres_version }}/main/pg_hba.conf"
+    owner: postgres
+    group: postgres
+    mode: 0640
+  notify: restart postgresql
+
+- name: update postgresql.conf
+  template:
+    src: "postgresql.conf.j2"
+    dest: "/etc/postgresql/{{ postgres_version }}/main/postgresql.conf"
+    owner: postgres
+    group: postgres
+    mode: 0640
+  notify: restart postgresql

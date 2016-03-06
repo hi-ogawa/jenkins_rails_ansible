@@ -1,0 +1,19 @@
+- name: set jenkins apt key
+  apt_key: url='http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key' state=present
+
+- name: set jenkins apt repository
+  apt_repository: repo='deb http://pkg.jenkins-ci.org/debian binary/' state=present
+
+- name: apt-get update
+  apt: update_cache=yes cache_valid_time=3600
+
+- name: install java
+  apt: name={{ item }} state=present
+  with_items:
+    - openjdk-7-jre
+    - openjdk-7-jdk
+
+- name: install jenkins
+  apt: name={{ item }} state=present
+  with_items:
+    - jenkins

@@ -38,6 +38,9 @@ $ ANSIBLE_HOST_KEY_CHECKING=False ansible -i ./ansible/hosts vagrant -u ubuntu -
 # run ansible script (verbosely)
 $ ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -v -i ./ansible/hosts ./ansible/vagrant.yml
 
+# get real on aws
+$ ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -v -i ./ansible/hosts ./ansible/aws.yml
+
 # in vm
 $ cat /etc/default/jenkins
 ```

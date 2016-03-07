@@ -1,0 +1,10 @@
+---
+- name: enable jenkins proxy
+  file:
+    src: "/etc/nginx/sites-available/jenkins.conf"
+    path: "/etc/nginx/sites-enabled/jenkins.conf"
+    state: link
+    force: yes
+
+- name: restart nginx
+  service: name=nginx state=restarted

@@ -51,7 +51,12 @@ $ cat /etc/default/jenkins
 - https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Ubuntu
 - https://www.digitalocean.com/community/tutorials/how-to-install-java-on-ubuntu-with-apt-get
 
-- ansible:
+- ansible techniques:
   - http://docs.ansible.com/ansible/playbooks_error_handling.html
   - http://docs.ansible.com/ansible/shell_module.html
   - http://docs.ansible.com/ansible/playbooks_conditionals.html#register-variables
+  - http://docs.ansible.com/ansible/faq.html#how-can-i-set-the-path-or-any-other-environment-variable-for-a-task-or-entire-playbook
+
+- jenkins on tcp 80:
+  - https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Ubuntu#InstallingJenkinsonUbuntu-SettingupanNginxProxyforport80%5C%3E8080
+  - https://wiki.jenkins-ci.org/display/JENKINS/Running+Jenkins+on+Port+80+or+443+using+iptables

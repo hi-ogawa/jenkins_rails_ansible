@@ -11,3 +11,4 @@
     - rails
     - postgres
     - jenkins
+    - nginx

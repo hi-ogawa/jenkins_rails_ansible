@@ -10,3 +10,4 @@
     - rails
     - postgres
     - jenkins
+    - nginx

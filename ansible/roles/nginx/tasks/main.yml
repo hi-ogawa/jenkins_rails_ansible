@@ -1,0 +1,19 @@
+---
+- name: install nginx
+  apt: name=nginx state=present
+
+- name: remove default nginx config
+  file: path={{ item }} state=absent
+  with_items:
+    - "/etc/nginx/sites-available/default"
+    - "/etc/nginx/sites-enabled/default"
+
+- name: jenkins proxy configuarion available
+  template:
+    src: "jenkins.conf.j2"
+    dest: "/etc/nginx/sites-available/jenkins.conf"
+  vars:
+    server_name: "{{ nginx_server_name }}"
+  notify:
+    - enable jenkins proxy
+    - restart nginx
